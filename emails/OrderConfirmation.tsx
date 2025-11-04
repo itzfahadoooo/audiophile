@@ -111,7 +111,7 @@ export const OrderConfirmationEmail = ({
           {/* View Order Button */}
           <Section style={buttonSection}>
             <Button
-              href={`${process.env.NEXT_PUBLIC_APP_URL}/orders/${orderId}`}
+              href={`${process.env.NEXT_PUBLIC_APP_URL}`}
               style={button}
               className="button"
             >
