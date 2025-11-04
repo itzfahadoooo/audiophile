@@ -92,14 +92,7 @@ export const OrderConfirmationEmail = ({
         <Container style={container} className="container">
           {/* Header */}
           <Section style={header} className="header">
-            {/* ✅ Added logo image */}
-            <Img
-              src={`${baseUrl}/assets/shared/desktop/logo.svg`}
-              alt="Audiophile"
-              width="143"
-              height="25"
-              style={{ display: "block", margin: "0 auto" }}
-            />
+            <Text style={logoText}>audiophile</Text>
           </Section>
 
           {/* Success Icon */}
@@ -304,13 +297,13 @@ const header = {
   textAlign: "center" as const,
 };
 
-// const logoText = {
-//   fontSize: "24px",
-//   fontWeight: "700",
-//   color: "#ffffff",
-//   margin: "0",
-//   letterSpacing: "-0.5px",
-// };
+const logoText = {
+  fontSize: "24px",
+  fontWeight: "700",
+  color: "#ffffff",
+  margin: "0",
+  letterSpacing: "-0.5px",
+};
 
 const iconSection = {
   textAlign: "center" as const,
