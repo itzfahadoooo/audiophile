@@ -9,6 +9,7 @@ import {
   Text,
   Hr,
   Button,
+  Img, // ✅ Added
 } from "@react-email/components";
 import * as React from "react";
 
@@ -47,6 +48,10 @@ export const OrderConfirmationEmail = ({
   const formatPrice = (price: number) => {
     return `$${price.toLocaleString("en-US")}`;
   };
+
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL ||
+    "https://audiophile-kappa-two.vercel.app";
 
   return (
     <Html>
@@ -87,7 +92,14 @@ export const OrderConfirmationEmail = ({
         <Container style={container} className="container">
           {/* Header */}
           <Section style={header} className="header">
-            <Text style={logoText}>audiophile</Text>
+            {/* ✅ Added logo image */}
+            <Img
+              src={`${baseUrl}/assets/shared/desktop/logo.svg`}
+              alt="Audiophile"
+              width="143"
+              height="25"
+              style={{ display: "block", margin: "0 auto" }}
+            />
           </Section>
 
           {/* Success Icon */}
@@ -96,10 +108,15 @@ export const OrderConfirmationEmail = ({
           </Section>
 
           {/* Title */}
-          <Heading style={heading} className="heading">Thank You For Your Order!</Heading>
-          <Text style={paragraph} className="content-padding">Hi {customerName},</Text>
+          <Heading style={heading} className="heading">
+            Thank You For Your Order!
+          </Heading>
           <Text style={paragraph} className="content-padding">
-            Your order has been confirmed and will be shipping soon. You&apos;ll receive a tracking number once your order has been dispatched.
+            Hi {customerName},
+          </Text>
+          <Text style={paragraph} className="content-padding">
+            Your order has been confirmed and will be shipping soon. You&apos;ll
+            receive a tracking number once your order has been dispatched.
           </Text>
 
           {/* Order ID */}
@@ -111,7 +128,7 @@ export const OrderConfirmationEmail = ({
           {/* View Order Button */}
           <Section style={buttonSection}>
             <Button
-              href={`${process.env.NEXT_PUBLIC_APP_URL}`}
+              href={`${baseUrl}/orders/${orderId}`}
               style={button}
               className="button"
             >
@@ -123,13 +140,38 @@ export const OrderConfirmationEmail = ({
 
           {/* Order Items */}
           <Section style={itemsSection}>
-            <Text style={sectionTitle} className="content-padding">Order Summary</Text>
-            
+            <Text style={sectionTitle} className="content-padding">
+              Order Summary
+            </Text>
+
             {items.map((item, index) => (
               <div key={index} style={itemContainer}>
-                <table width="100%" cellPadding="0" cellSpacing="0" style={itemTable}>
+                <table
+                  width="100%"
+                  cellPadding="0"
+                  cellSpacing="0"
+                  style={itemTable}
+                >
                   <tbody>
                     <tr>
+                      {/* ✅ Added product image */}
+                      <td width="64" style={{ paddingRight: "12px" }}>
+                        <Img
+                          src={
+                            item.image.startsWith("http")
+                              ? item.image
+                              : `${baseUrl}${item.image}`
+                          }
+                          width="64"
+                          height="64"
+                          alt={item.name}
+                          style={{
+                            borderRadius: "8px",
+                            backgroundColor: "#f1f1f1",
+                            display: "block",
+                          }}
+                        />
+                      </td>
                       <td style={itemDetailsCell}>
                         <Text style={itemName}>{item.name}</Text>
                         <Text style={itemPrice}>{formatPrice(item.price)}</Text>
@@ -148,7 +190,12 @@ export const OrderConfirmationEmail = ({
 
           {/* Totals */}
           <Section style={totalsSection} className="content-padding">
-            <table width="100%" cellPadding="0" cellSpacing="0" style={totalsTable}>
+            <table
+              width="100%"
+              cellPadding="0"
+              cellSpacing="0"
+              style={totalsTable}
+            >
               <tbody>
                 <tr>
                   <td style={totalLabelCell}>
@@ -179,7 +226,9 @@ export const OrderConfirmationEmail = ({
                     <Text style={grandTotalText}>Grand Total</Text>
                   </td>
                   <td style={grandTotalValueCell}>
-                    <Text style={grandTotalAmount}>{formatPrice(grandTotal)}</Text>
+                    <Text style={grandTotalAmount}>
+                      {formatPrice(grandTotal)}
+                    </Text>
                   </td>
                 </tr>
               </tbody>
@@ -216,7 +265,8 @@ export const OrderConfirmationEmail = ({
               © 2024 Audiophile. All rights reserved.
             </Text>
             <Text style={footerText}>
-              You&apos;re receiving this email because you placed an order with Audiophile.
+              You&apos;re receiving this email because you placed an order with
+              Audiophile.
             </Text>
           </Section>
         </Container>
@@ -230,7 +280,8 @@ export default OrderConfirmationEmail;
 // Responsive Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  fontFamily: 'Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif',
+  fontFamily:
+    'Manrope, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif',
   WebkitFontSmoothing: "antialiased" as const,
   MozOsxFontSmoothing: "grayscale" as const,
   padding: "20px 0",
@@ -253,13 +304,13 @@ const header = {
   textAlign: "center" as const,
 };
 
-const logoText = {
-  fontSize: "24px",
-  fontWeight: "700",
-  color: "#ffffff",
-  margin: "0",
-  letterSpacing: "-0.5px",
-};
+// const logoText = {
+//   fontSize: "24px",
+//   fontWeight: "700",
+//   color: "#ffffff",
+//   margin: "0",
+//   letterSpacing: "-0.5px",
+// };
 
 const iconSection = {
   textAlign: "center" as const,
