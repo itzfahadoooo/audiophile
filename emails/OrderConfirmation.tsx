@@ -121,7 +121,7 @@ export const OrderConfirmationEmail = ({
           {/* View Order Button */}
           <Section style={buttonSection}>
             <Button
-              href={`${baseUrl}/orders/${orderId}`}
+              href={`${baseUrl}`}
               style={button}
               className="button"
             >
