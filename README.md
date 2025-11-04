@@ -7,8 +7,6 @@ A sophisticated, pixel-perfect e-commerce platform for premium audio equipment b
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.x-38B2AC.svg)
 
----
-
 ## ✨ Features
 
 - 🎨 **Responsive Design** - Pixel-perfect layout on mobile (375px), tablet (768px), and desktop (1440px)
@@ -21,8 +19,6 @@ A sophisticated, pixel-perfect e-commerce platform for premium audio equipment b
 - 💰 **Price Formatting** - Automatic currency formatting and calculations
 - ♿ **Accessible** - Semantic HTML, proper ARIA labels, and keyboard navigation
 
----
-
 ## 🛠️ Tech Stack
 
 - **Framework:** Next.js 14 (App Router)
@@ -33,8 +29,6 @@ A sophisticated, pixel-perfect e-commerce platform for premium audio equipment b
 - **Fonts:** Manrope (Google Fonts)
 - **Icons:** Custom SVG icons
 - **Form Handling:** React Hooks (controlled components)
-
----
 
 ## 📁 Project Structure
 
@@ -75,8 +69,6 @@ audiophile-ecommerce/
 └── package.json                  # Dependencies
 ```
 
----
-
 ## 🚀 Installation & Setup
 
 ### Prerequisites
@@ -86,14 +78,14 @@ audiophile-ecommerce/
 
 ### Steps
 
-1. **Clone the repository:**
+**1. Clone the repository:**
 
 ```bash
 git clone <repository-url>
 cd audiophile-ecommerce
 ```
 
-2. **Install dependencies:**
+**2. Install dependencies:**
 
 ```bash
 npm install
@@ -101,7 +93,7 @@ npm install
 yarn install
 ```
 
-3. **Set up environment variables (if needed):**
+**3. Set up environment variables (if needed):**
 
 Create a `.env.local` file in the root directory:
 
@@ -110,7 +102,7 @@ Create a `.env.local` file in the root directory:
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-4. **Run development server:**
+**4. Run development server:**
 
 ```bash
 npm run dev
@@ -120,7 +112,7 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-5. **Build for production:**
+**5. Build for production:**
 
 ```bash
 npm run build
@@ -130,7 +122,7 @@ yarn build
 yarn start
 ```
 
-6. **Deploy:**
+**6. Deploy:**
 
 The easiest way to deploy is using [Vercel](https://vercel.com):
 
@@ -141,8 +133,6 @@ npm install -g vercel
 # Deploy
 vercel
 ```
-
----
 
 ## 📖 Usage
 
@@ -173,8 +163,6 @@ vercel
 - **Desktop:** Full navigation menu in header
 - **Mobile/Tablet:** Hamburger menu opens category cards dropdown
 - **Footer:** Additional navigation links and company info
-
----
 
 ## 🎨 Design System
 
@@ -215,26 +203,24 @@ vercel
 - **Tablet:** 768px viewport, 40px padding
 - **Desktop:** 1440px viewport, max-width 1110px, centered
 
----
-
 ## 🛒 Shopping Cart System
 
 ### Cart Context
 
 The CartContext manages global shopping cart state with these features:
 
-- **State Management:**
-  - Items array with product details, quantity, and subtotals
-  - Cart open/closed state
-  - Total items count
-  - Total price calculation
+**State Management:**
+- Items array with product details, quantity, and subtotals
+- Cart open/closed state
+- Total items count
+- Total price calculation
 
-- **Actions:**
-  - `addToCart(product, quantity)` - Add items to cart
-  - `removeFromCart(productId)` - Remove items
-  - `updateQuantity(productId, quantity)` - Update item quantity
-  - `clearCart()` - Empty the cart
-  - `openCart()` / `closeCart()` - Toggle cart modal
+**Actions:**
+- `addToCart(product, quantity)` - Add items to cart
+- `removeFromCart(productId)` - Remove items
+- `updateQuantity(productId, quantity)` - Update item quantity
+- `clearCart()` - Empty the cart
+- `openCart()` / `closeCart()` - Toggle cart modal
 
 ### Cart Calculations
 
@@ -254,8 +240,6 @@ vat = cartTotal × 0.2
 // Grand Total
 grandTotal = cartTotal + shipping + vat
 ```
-
----
 
 ## 📱 Responsive Breakpoints
 
@@ -280,8 +264,6 @@ module.exports = {
 - **Flexible Grids:** 1-column → 2-column → 3-column layouts
 - **Touch Targets:** Minimum 44×44px on mobile
 - **Navigation:** Hamburger menu ↔ Full navigation
-
----
 
 ## 🗂️ Product Data Structure
 
@@ -322,8 +304,6 @@ interface Product {
 }
 ```
 
----
-
 ## ♿ Accessibility Features
 
 - **Semantic HTML:** Proper heading hierarchy, nav, main, footer elements
@@ -333,8 +313,6 @@ interface Product {
 - **Alt Text:** Descriptive alternative text for all images
 - **Color Contrast:** WCAG AA compliant color combinations
 - **Touch Targets:** Minimum 44×44px clickable areas
-
----
 
 ## 🌐 Pages & Routes
 
@@ -358,8 +336,6 @@ Products use slug-based routing:
 /earphones/yx1-earphones
 ```
 
----
-
 ## 📦 Key Dependencies
 
 ```json
@@ -373,8 +349,6 @@ Products use slug-based routing:
   "postcss": "8.x"
 }
 ```
-
----
 
 ## 🚧 Future Enhancements
 
@@ -392,8 +366,6 @@ Products use slug-based routing:
 - [ ] Multi-currency support
 - [ ] Product filtering and sorting
 
----
-
 ## ⚠️ Known Limitations
 
 - Cart data not persisted (resets on page refresh)
@@ -403,46 +375,31 @@ Products use slug-based routing:
 - No order tracking system
 - Limited form validation on checkout
 
----
-
 ## 🔧 Troubleshooting
 
 ### Images Not Loading
+
 - Ensure all images exist in `/public/assets/` directory
 - Check image paths in product data
 - Verify Next.js image optimization is working
 
 ### Cart State Issues
+
 - Clear browser cache and cookies
 - Check CartContext provider wraps entire app
 - Verify context imports are correct
 
 ### Build Errors
+
 - Update dependencies: `npm update`
 - Clear `.next` folder: `rm -rf .next`
 - Reinstall node_modules: `rm -rf node_modules && npm install`
 
 ### Styling Issues
+
 - Regenerate Tailwind: `npm run dev`
 - Check Tailwind config includes all content paths
 - Verify custom CSS in globals.css
-
----
-
-## 📹 Demo & Submission
-
-### Video Demonstration
-
-Record a video showing:
-- ✅ Homepage with hero section and featured products
-- ✅ Category browsing (headphones, speakers, earphones)
-- ✅ Product detail page with gallery
-- ✅ Adding items to cart
-- ✅ Cart modal with quantity updates
-- ✅ Checkout form completion
-- ✅ Order confirmation modal
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Navigation (mobile menu with category cards)
 
 ### Deployment Checklist
 
@@ -454,13 +411,9 @@ Record a video showing:
 6. **Error Handling:** Test all edge cases
 7. **Browser Testing:** Chrome, Firefox, Safari, Edge
 
----
-
 ## 📄 License
 
 MIT License – free to use for learning and development.
-
----
 
 ## 🙏 Acknowledgments
 
@@ -472,5 +425,4 @@ Optimized for performance and user experience.
 
 ---
 
-**Happy Shopping! 🎧🔊**#   a u d i o p h i l e  
- 
+**Happy Shopping! 🎧🔊**
