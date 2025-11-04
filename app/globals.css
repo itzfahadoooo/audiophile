@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light mode defaults */
+  --background: #fafafa;
+  --foreground: #101010;
+
+  /* Brand colors */
+  --color-primary: #d87d4a;
+  --color-primary-light: #fbaf85;
+  --color-dark: #101010;
+  --color-gray-light: #f1f1f1;
+  --color-gray-ultra: #fafafa;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-error: #CD2C2C;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark theme override (optional) */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +24,308 @@
   }
 }
 
+/* ========== Tailwind Theme Tokens ========== */
+@theme inline {
+  /* COLORS */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-dark: var(--color-dark);
+  --color-gray-light: var(--color-gray-light);
+  --color-gray-ultra: var(--color-gray-ultra);
+  --color-black: var(--color-black);
+  --color-white: var(--color-white);
+
+  /* FONTS */
+  --font-sans: var(--font-manrope), Manrope, sans-serif;
+
+  /* FONT SIZES (Audiophile scale) */
+  --text-h1: 56px;
+  --leading-h1: 58px;
+
+  --text-h2: 40px;
+  --leading-h2: 44px;
+
+  --text-h3: 32px;
+  --leading-h3: 36px;
+
+  --text-h4: 28px;
+  --leading-h4: 38px;
+
+  --text-h5: 24px;
+  --leading-h5: 33px;
+
+  --text-h6: 18px;
+  --leading-h6: 24px;
+
+  --text-body: 15px;
+  --leading-body: 25px;
+
+  --text-button: 13px;
+  --leading-button: 18px;
+
+  --text-overline: 14px;
+  --leading-overline: 19px;
+
+  /* BREAKPOINTS */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
+  /* BORDER RADIUS */
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}
+
+/* ========== Base Elements ========== */
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-manrope), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Container helper */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* ========== Typography Utilities ========== */
+
+.text-h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-h1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-h2);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-h3);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.text-h4 {
+  font-size: var(--text-h4);
+  line-height: var(--leading-h4);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.text-h5 {
+  font-size: var(--text-h5);
+  line-height: var(--leading-h5);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+}
+
+.text-h6 {
+  font-size: var(--text-h6);
+  line-height: var(--leading-h6);
+  font-weight: 700;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.overline {
+  font-size: var(--text-overline);
+  line-height: var(--leading-overline);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-primary);
+}
+
+.btn-text {
+  font-size: var(--text-button);
+  line-height: var(--leading-button);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ========== Button Styles ========== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 32px;
+  font-size: var(--text-button);
+  line-height: var(--leading-button);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-light);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-dark);
+  border: 1px solid var(--color-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.btn-tertiary {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.btn-tertiary:hover {
+  background-color: #4c4c4c;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.newproduct {
+  font-size: var(--text-overline);
+  line-height: var(--leading-overline);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.625em;
+  color: var(--color-primary);
+}
+
+/* ========== Responsive Typography ========== */
+
+@media (max-width: 767px) {
+  .text-h1 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  
+  .text-h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 18px 24px;
+  border: 1px solid #cfcfcf;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  transition: border-color var(--transition-fast);
+  caret-color: var(--color-primary);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+input.error,
+textarea.error,
+select.error {
+  border-color: var(--color-error);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: block;
+  margin-bottom: 9px;
+  color: var(--color-dark);
+}
+
+label.text-error {
+  color: var(--color-error);
+}
+
+.error-message {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-error);
+  margin-top: 4px;
+}
+
+/* Radio buttons */
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid #cfcfcf;
+  border-radius: 50%;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="radio"]:checked {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Accessibility focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
