@@ -46,7 +46,7 @@ export default function ProductDetailPage({
   };
 
   return (
-    <main className="bg-white text-black">
+    <main className="bg-gray-ultra text-black">
       {/* Go Back */}
       <section className="py-8 lg:py-16">
         <div className="container">
@@ -69,17 +69,17 @@ export default function ProductDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Product Image */}
             <motion.div
-              className="bg-gray-light rounded-lg p-8 lg:p-16 flex items-center justify-center"
+              className="bg-gray-light rounded-lg p-8 flex items-center justify-center"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
-              <div className="relative w-full max-w-md">
+              <div className="relative w-full max-w-[400px] h-[400px] md:max-w-[500px] md:h-[500px]">
                 <Image
                   src={product.image.desktop}
                   alt={product.name}
-                  width={540}
-                  height={560}
+                  fill
+                  sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 500px"
                   className="w-full h-auto"
                   priority
                 />
@@ -324,14 +324,17 @@ export default function ProductDetailPage({
                       src={related.image.desktop}
                       alt={related.name}
                       fill
-                      className="object-contain"
+                      className="object-contain scale-125"
                     />
                   </div>
                 </motion.div>
 
                 {/* Related Product Info */}
                 <h3 className="text-h5 mb-8">{related.name.toUpperCase()}</h3>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
                   <Link
                     href={`/products/${related.slug}`}
                     className="btn btn-primary"

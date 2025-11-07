@@ -45,20 +45,16 @@ export default function HeadphonesPage() {
               >
                 {/* Product Image */}
                 <motion.div
-                  className={`bg-gray-light rounded-lg p-12 lg:p-16 flex items-center justify-center ${
+                  className={`bg-gray-light rounded-lg p-6 flex items-center justify-center ${
                     isEven ? "order-1" : "order-1 lg:order-2"
                   }`}
-                  initial={{ opacity: 0, x: isEven ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
                 >
-                  <div className="relative w-full max-w-sm">
+                  <div className="relative w-full max-w-[400px] h-[400px] md:max-w-[500px] md:h-[500px]">
                     <Image
                       src={product.categoryImage.desktop}
                       alt={product.name}
-                      width={540}
-                      height={560}
+                      fill
+                      sizes="(max-width: 768px) 250px, (max-width: 1024px) 350px, 500px"
                       className="w-full h-auto"
                     />
                   </div>
@@ -111,7 +107,10 @@ export default function HeadphonesPage() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.7 }}
                   >
-                    <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                       <Link
                         href={`/products/${product.slug}`}
                         className="btn btn-primary"
