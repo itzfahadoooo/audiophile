@@ -230,9 +230,12 @@ export default function CheckoutPage() {
                   <h2 className="text-primary mb-4 text-button font-bold leading-body tracking-[0.929px]">BILLING DETAILS</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className={errors.name ? "text-error" : ""}>
-                        Name
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="name" className={errors.name ? "text-error" : ""}>
+                          Name
+                        </label>
+                        {errors.name && <p className="error-message">{errors.name}</p>}
+                      </div>
                       <input
                         type="text"
                         id="name"
@@ -242,13 +245,15 @@ export default function CheckoutPage() {
                         placeholder="Alexei Ward"
                         className={errors.name ? "error" : ""}
                       />
-                      {errors.name && <p className="error-message">{errors.name}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="email" className={errors.email ? "text-error" : ""}>
-                        Email Address
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="email" className={errors.email ? "text-error" : ""}>
+                          Email Address
+                        </label>
+                        {errors.email && <p className="error-message">{errors.email}</p>}
+                      </div>
                       <input
                         type="email"
                         id="email"
@@ -258,13 +263,15 @@ export default function CheckoutPage() {
                         placeholder="alexei@mail.com"
                         className={errors.email ? "error" : ""}
                       />
-                      {errors.email && <p className="error-message">{errors.email}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className={errors.phone ? "text-error" : ""}>
-                        Phone Number
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="phone" className={errors.phone ? "text-error" : ""}>
+                          Phone Number
+                        </label>
+                        {errors.phone && <p className="error-message">{errors.phone}</p>}
+                      </div>
                       <input
                         type="tel"
                         id="phone"
@@ -274,7 +281,6 @@ export default function CheckoutPage() {
                         placeholder="+1 202-555-0136"
                         className={errors.phone ? "error" : ""}
                       />
-                      {errors.phone && <p className="error-message">{errors.phone}</p>}
                     </div>
                   </div>
                 </div>
@@ -284,9 +290,12 @@ export default function CheckoutPage() {
                   <h2 className="mb-4 text-primary text-button font-bold leading-body tracking-[0.929px]">SHIPPING INFO</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
-                      <label htmlFor="address" className={errors.address ? "text-error" : ""}>
-                        Your Address
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="address" className={errors.address ? "text-error" : ""}>
+                          Your Address
+                        </label>
+                        {errors.address && <p className="error-message">{errors.address}</p>}
+                      </div>
                       <input
                         type="text"
                         id="address"
@@ -296,13 +305,15 @@ export default function CheckoutPage() {
                         placeholder="1137 Williams Avenue"
                         className={errors.address ? "error" : ""}
                       />
-                      {errors.address && <p className="error-message">{errors.address}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="zipCode" className={errors.zipCode ? "text-error" : ""}>
-                        ZIP Code
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="zipCode" className={errors.zipCode ? "text-error" : ""}>
+                          ZIP Code
+                        </label>
+                        {errors.zipCode && <p className="error-message">{errors.zipCode}</p>}
+                      </div>
                       <input
                         type="text"
                         id="zipCode"
@@ -312,13 +323,15 @@ export default function CheckoutPage() {
                         placeholder="10001"
                         className={errors.zipCode ? "error" : ""}
                       />
-                      {errors.zipCode && <p className="error-message">{errors.zipCode}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="city" className={errors.city ? "text-error" : ""}>
-                        City
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="city" className={errors.city ? "text-error" : ""}>
+                          City
+                        </label>
+                        {errors.city && <p className="error-message">{errors.city}</p>}
+                      </div>
                       <input
                         type="text"
                         id="city"
@@ -328,13 +341,15 @@ export default function CheckoutPage() {
                         placeholder="New York"
                         className={errors.city ? "error" : ""}
                       />
-                      {errors.city && <p className="error-message">{errors.city}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="country" className={errors.country ? "text-error" : ""}>
-                        Country
-                      </label>
+                      <div className="flex items-center justify-between mb-2">
+                        <label htmlFor="country" className={errors.country ? "text-error" : ""}>
+                          Country
+                        </label>
+                        {errors.country && <p className="error-message">{errors.country}</p>}
+                      </div>
                       <input
                         type="text"
                         id="country"
@@ -344,7 +359,6 @@ export default function CheckoutPage() {
                         placeholder="United States"
                         className={errors.country ? "error" : ""}
                       />
-                      {errors.country && <p className="error-message">{errors.country}</p>}
                     </div>
                   </div>
                 </div>
@@ -384,9 +398,14 @@ export default function CheckoutPage() {
                     {formData.paymentMethod === "e-money" && (
                       <>
                         <div>
-                          <label htmlFor="eMoneyNumber" className={errors.eMoneyNumber ? "text-error" : ""}>
-                            e-Money Number
-                          </label>
+                          <div className="flex items-center justify-between mb-2">
+                            <label htmlFor="eMoneyNumber" className={errors.eMoneyNumber ? "text-error" : ""}>
+                              e-Money Number
+                            </label>
+                            {errors.eMoneyNumber && (
+                              <p className="error-message">{errors.eMoneyNumber}</p>
+                            )}
+                          </div>
                           <input
                             type="text"
                             id="eMoneyNumber"
@@ -396,15 +415,17 @@ export default function CheckoutPage() {
                             placeholder="238521993"
                             className={errors.eMoneyNumber ? "error" : ""}
                           />
-                          {errors.eMoneyNumber && (
-                            <p className="error-message">{errors.eMoneyNumber}</p>
-                          )}
                         </div>
 
                         <div>
-                          <label htmlFor="eMoneyPin" className={errors.eMoneyPin ? "text-error" : ""}>
-                            e-Money PIN
-                          </label>
+                          <div className="flex items-center justify-between mb-2">
+                            <label htmlFor="eMoneyPin" className={errors.eMoneyPin ? "text-error" : ""}>
+                              e-Money PIN
+                            </label>
+                            {errors.eMoneyPin && (
+                              <p className="error-message">{errors.eMoneyPin}</p>
+                            )}
+                          </div>
                           <input
                             type="text"
                             id="eMoneyPin"
@@ -414,9 +435,6 @@ export default function CheckoutPage() {
                             placeholder="6891"
                             className={errors.eMoneyPin ? "error" : ""}
                           />
-                          {errors.eMoneyPin && (
-                            <p className="error-message">{errors.eMoneyPin}</p>
-                          )}
                         </div>
                       </>
                     )}

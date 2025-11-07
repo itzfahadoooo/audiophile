@@ -74,6 +74,7 @@ export default function CategoryCards() {
                       xmlns="http://www.w3.org/2000/svg"
                       whileHover={{ x: 3 }}
                       transition={{ duration: 0.2 }}
+                      className="text-primary"
                     >
                       <path
                         d="M1.322 1l5 5-5 5"

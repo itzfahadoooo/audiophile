@@ -75,6 +75,7 @@
   --breakpoint-xl: 1440px;
 
   /* BORDER RADIUS */
+  --radius-sm: 8px;
   --radius-xl: 12px;
   --radius-2xl: 16px;
 }
@@ -267,7 +268,7 @@ select:focus {
 input.error,
 textarea.error,
 select.error {
-  border-color: var(--color-error);
+  border: 2px solid var(--color-error);
 }
 
 input::placeholder,
@@ -290,7 +291,7 @@ label.text-error {
 
 .error-message {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--color-error);
   margin-top: 4px;
 }
